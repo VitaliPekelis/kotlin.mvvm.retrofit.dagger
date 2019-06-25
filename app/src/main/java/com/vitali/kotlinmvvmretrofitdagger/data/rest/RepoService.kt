@@ -1,4 +1,4 @@
-package com.vitali.kotlinmvvmretrofitdagger.data
+package com.vitali.kotlinmvvmretrofitdagger.data.rest
 
 import com.vitali.kotlinmvvmretrofitdagger.data.model.Repo
 import io.reactivex.Single

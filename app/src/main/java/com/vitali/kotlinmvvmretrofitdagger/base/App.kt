@@ -1,4 +1,4 @@
-package com.vitali.kotlinmvvmretrofitdagger
+package com.vitali.kotlinmvvmretrofitdagger.base
 import com.vitali.kotlinmvvmretrofitdagger.di.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
