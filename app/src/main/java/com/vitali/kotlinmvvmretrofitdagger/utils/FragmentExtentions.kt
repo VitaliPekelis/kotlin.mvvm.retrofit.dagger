@@ -1,4 +1,4 @@
-package com.vitali.kotlinmvvmretrofitdagger.base
+package com.vitali.kotlinmvvmretrofitdagger.utils
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
@@ -10,7 +10,6 @@ fun FragmentActivity.replaceFragment(@IdRes containerViewId: Int, fragment: Frag
     supportFragmentManager.transaction(now = false, allowStateLoss = false) {
         replace(containerViewId, fragment, fragment::class.java.simpleName)
     }
-
 }
 
 fun FragmentActivity.addFragment(@IdRes containerViewId: Int, fragment: Fragment)

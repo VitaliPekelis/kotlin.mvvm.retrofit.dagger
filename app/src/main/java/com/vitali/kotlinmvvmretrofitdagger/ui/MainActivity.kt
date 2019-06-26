@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import com.vitali.kotlinmvvmretrofitdagger.R
 import com.vitali.kotlinmvvmretrofitdagger.base.BaseActivity
-import com.vitali.kotlinmvvmretrofitdagger.base.replaceFragment
+import com.vitali.kotlinmvvmretrofitdagger.utils.replaceFragment
 
 class MainActivity : BaseActivity() {
 
