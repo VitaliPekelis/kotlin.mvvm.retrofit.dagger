@@ -1,7 +1,12 @@
 package com.vitali.kotlinmvvmretrofitdagger.ui
 
+import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import com.vitali.kotlinmvvmretrofitdagger.R
 import com.vitali.kotlinmvvmretrofitdagger.base.BaseFragment
+import com.vitali.kotlinmvvmretrofitdagger.base.ViewModelFactory
+import javax.inject.Inject
 
 /**
  * A simple [BaseFragment] subclass.
@@ -12,8 +17,23 @@ import com.vitali.kotlinmvvmretrofitdagger.base.BaseFragment
  */
 class ListFragment : BaseFragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModel: ListViewModel
+
     override fun layoutRes(): Int {
         return R.layout.fragment_list
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(activity!!, viewModelFactory).get(ListViewModel::class.java)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        viewModel.start()
+
     }
 
 

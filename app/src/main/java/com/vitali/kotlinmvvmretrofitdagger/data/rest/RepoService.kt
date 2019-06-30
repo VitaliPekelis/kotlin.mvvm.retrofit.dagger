@@ -8,8 +8,8 @@ import retrofit2.http.Path
 interface RepoService {
 
     @GET("orgs/Google/repos")
-    fun getRepositores() : Single<List<Repo>>
+    fun getRepositories() : Single<List<Repo>>
 
     @GET("repos/{owner}/{name}")
-    fun getRepo(@Path("owner") owner:String, @Path("name") name:String)
+    fun getRepo(@Path("owner") owner:String, @Path("name") name:String): Single<Repo>
 }

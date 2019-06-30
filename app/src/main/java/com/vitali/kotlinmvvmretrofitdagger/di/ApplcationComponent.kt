@@ -11,7 +11,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class, AndroidSupportInjectionModule::class, ActivitiesModule::class))
+@Component(modules = [ApplicationModule::class, AndroidSupportInjectionModule::class, ActivitiesBindingModule::class])
 interface ApplicationComponent : AndroidInjector<DaggerApplication> {
 
     fun inject(application: App)
@@ -20,6 +20,7 @@ interface ApplicationComponent : AndroidInjector<DaggerApplication> {
     interface Builder {
         @BindsInstance
         fun application(app: App):Builder
+        fun setNetworkModel(model:NetworkModule):Builder
         fun build():ApplicationComponent
     }
 

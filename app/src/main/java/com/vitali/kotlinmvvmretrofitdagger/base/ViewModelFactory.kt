@@ -7,7 +7,7 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
-class ViewModelFactory @Inject constructor(private var creators :Map<Class<out ViewModel>, Provider<ViewModel>> ) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(private var creators :Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>> ) : ViewModelProvider.Factory {
 
 
     @Suppress("UNCHECKED_CAST")
