@@ -1,11 +1,14 @@
 package com.vitali.kotlinmvvmretrofitdagger.di
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.vitali.kotlinmvvmretrofitdagger.BuildConfig
 import com.vitali.kotlinmvvmretrofitdagger.data.rest.MockRepoRepository
 import com.vitali.kotlinmvvmretrofitdagger.data.rest.NetworkRepoRepository
 import com.vitali.kotlinmvvmretrofitdagger.data.rest.RepoRepository
 import com.vitali.kotlinmvvmretrofitdagger.data.rest.RepoService
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import javax.inject.Singleton
@@ -18,10 +21,21 @@ class NetworkModule constructor(private val isMockNetwork:Boolean) {
     @Singleton
     @Provides
     internal fun provideRetrofit(): Retrofit{
-        return Retrofit.Builder()
+
+        val retrofitBuilder = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+
+        if(BuildConfig.DEBUG){
+            val httpClient = OkHttpClient.Builder()
+                //add debug bridge interceptor
+                .addNetworkInterceptor(StethoInterceptor())
+                .build()
+
+            retrofitBuilder.client(httpClient)
+        }
+
+        return retrofitBuilder.build()
     }
 
     @Singleton

@@ -1,4 +1,5 @@
 package com.vitali.kotlinmvvmretrofitdagger.base
+import com.facebook.stetho.Stetho
 import com.vitali.kotlinmvvmretrofitdagger.BuildConfig
 import com.vitali.kotlinmvvmretrofitdagger.di.DaggerApplicationComponent
 import com.vitali.kotlinmvvmretrofitdagger.di.NetworkModule
@@ -6,6 +7,18 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
 class App: DaggerApplication() {
+
+    override fun onCreate() {
+        super.onCreate()
+        /**
+         * Init debug bridge on debug mode
+         *
+         * usage 'chrome://inspect' in chrome
+         * */
+        if(BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this)
+        }
+    }
 
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
