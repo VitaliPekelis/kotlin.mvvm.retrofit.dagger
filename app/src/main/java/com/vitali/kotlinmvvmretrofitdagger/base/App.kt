@@ -10,6 +10,11 @@ class App: DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        /**
+         * Init debug bridge on debug mode
+         *
+         * usage 'chrome://inspect' in chrome
+         * */
         if(BuildConfig.DEBUG){
             Stetho.initializeWithDefaults(this)
         }
